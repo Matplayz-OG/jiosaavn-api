@@ -1,6 +1,9 @@
 # JioSaavn API
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
+[![FastAPI](https://img.shields.io/badge/fastapi-0.115.6-green)](https://fastapi.tiangolo.com/)
 
 A high-performance unofficial API for JioSaavn, written in Python using the FastAPI framework. This API allows you to fetch DRM-free songs, cover art, lyrics, albums, playlists, artist information, and more.
 
