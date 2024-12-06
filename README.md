@@ -124,3 +124,7 @@ This API interacts with the JioSaavn website by scraping data and utilizing undo
 * **`app/config.py`:**  Manages application configuration settings.
 * **`main.py`:**  The main application file that creates and runs the FastAPI app.
 * **`requirements.txt`:** Lists the project dependencies.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
