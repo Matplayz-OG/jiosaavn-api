@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8000
 
 # Command to run the app using FastAPI's development command
-CMD ["fastapi", "dev", "main.py"]
+CMD ["fastapi", "dev", "main.py","--host", "0.0.0.0"]

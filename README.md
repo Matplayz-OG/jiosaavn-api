@@ -42,23 +42,39 @@ This API interacts with the JioSaavn website by scraping data and utilizing undo
    ```bash
    git clone https://github.com/anxkhn/jiosaavn-api
    ```
-2. **Install dependencies:**
+
+2. **Navigate to the project directory:**
    ```bash
    cd jiosaavn-api
-   pip install -r requirements.txt
    ```
-3. **Run the application:**
-   ```bash
-   fastapi dev main.py
-   ```
-4. **Access the API documentation:**
-   * Swagger UI: http://localhost:8000/docs
-   * ReDoc: http://localhost:8000/redoc
 
-or use Docker via 
-```bash
-docker-compose up --build
-```
+3. **Run the application:**
+
+   You have two options for running the application:
+
+   - **Option 1: Run directly using FastAPI**
+   
+     Install the dependencies and run the application using FastAPI (without Docker):
+     ```bash
+     pip install -r requirements.txt
+     fastapi dev main.py
+     ```
+
+   - **Option 2: Run the application using Docker**
+   
+     Alternatively, you can run the application in Docker using Docker Compose:
+     ```bash
+     docker-compose up --build
+     ```
+
+4. **Access the application:**
+
+   After running the application, you can access the following documentation pages:
+
+   - Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
+   - ReDoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+   You can also visit the app directly at `http://0.0.0.0:8000`.
 
 ## API Endpoints
 
