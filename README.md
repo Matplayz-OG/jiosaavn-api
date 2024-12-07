@@ -52,6 +52,11 @@ This API interacts with the JioSaavn website by scraping data and utilizing undo
    * Swagger UI: http://localhost:8000/docs
    * ReDoc: http://localhost:8000/redoc
 
+or use Docker via 
+```bash
+docker-compose up --build
+```
+
 ## API Endpoints
 
 **Songs:**
