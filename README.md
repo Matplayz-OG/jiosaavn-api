@@ -112,7 +112,23 @@ This API interacts with the JioSaavn website by scraping data and utilizing undo
 
 **Health:**
 
-* **`/ping`:** Basic health check endpoint.
+* **`/ping`:** Health check on all JioSaavn endpoints, including service-specific connectivity statuses.
+
+* **Note:** Kindly ensure all endpoints are working properly before use. Check the health status using the `/ping` endpoint. If everything is functioning correctly, you should receive a response similar to the following:
+
+    ```json
+    {
+        "msg": "Pong!",
+        "status": "healthy",
+        "details": [...]
+    }
+    ```
+
+* **TODO:**
+    
+    [ ] Enhance the `/ping` endpoint to include more comprehensive testing. This will involve validating actual media data (e.g., fetching and processing song, album, and playlist details) to ensure the full functionality of the services.
+
+
 
 ## File Structure and Breakdown
 
