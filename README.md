@@ -78,13 +78,108 @@ This API interacts with the JioSaavn website by scraping data and utilizing undo
 
 ## API Endpoints
 
-**Songs:**
 
-* **`/song/`:** Search for songs.
-    * **Query Parameters:**
-        * `query`: Search term for finding songs (required).
-        * `lyrics`: Include song lyrics in the response (optional, default: False).
-        * `songdata`: Fetch full song details or basic information (optional, default: True).
+## **Songs:**
+
+### **`/song/`:** Search for songs.
+  - **Query Parameters:**
+    - `query`: Search term for finding songs (required).
+    - `lyrics`: Include song lyrics in the response (optional, default: False).
+    - `songdata`: Fetch full song details or basic information (optional, default: True).
+
+### Example of a Song Response
+
+Curl
+
+```sh
+curl -X 'GET' \
+  'http://localhost:8000/song/?query=Chammak%20Challo&lyrics=false&songdata=true' \
+  -H 'accept: application/json'
+```
+
+Request URL
+
+```sh
+http://localhost:8000/song/?query=Chammak%20Challo&lyrics=false&songdata=true
+```
+
+
+The response will contain details about the song "Chammak Challo" from the album *Ra-One*:
+
+```json
+[
+  {
+    "id": "Fy1Afntv",
+    "type": "",
+    "song": "Chammak Challo",
+    "album": "Ra-One",
+    "year": "2011",
+    "music": "Vishal & Shekhar",
+    "music_id": "459880",
+    "primary_artists": "Vishal & Shekhar, Akon",
+    "primary_artists_id": "459880, 483645",
+    "featured_artists": "",
+    "featured_artists_id": "",
+    "singers": "Akon",
+    "starring": "Kareena Kapoor Khan, Arjun Rampal, Shah Rukh Khan",
+    "image": "https://c.saavncdn.com/026/Ra-One-Hindi-2011-500x500.jpg",
+    "label": "T-Series",
+    "albumid": "1044026",
+    "language": "hindi",
+    "origin": "none",
+    "play_count": 46741633,
+    "is_drm": 1,
+    "copyright_text": "©  2011 T-Series",
+    "320kbps": "true",
+    "is_dolby_content": false,
+    "explicit_content": 0,
+    "has_lyrics": "true",
+    "lyrics_snippet": "Kaisa sharmana aaja nach ke dikha de",
+    "encrypted_drm_media_url": "ID2ieOjCrwdjlkMElYlzWCptgNdUpWD8xydJt7j6jXEdgCPneyZNojdeP8sog1HrHQ1ju7mPTY4iVo7ihHTYTo92mytrdt3FDnQW0nglPS4=",
+    "encrypted_media_url": "ID2ieOjCrwfgWvL5sXl4B1ImC5QfbsDyEQ4rHVh0RMokzViB7agvK6ObqSdeDpzjWYUvjJuwilxeDkUt1t4NVxw7tS9a8Gtq",
+    "encrypted_media_path": "NMKyboFo/Fi2SD0aWempyWwikK8l2oSw5GbkRrzcQETj7mZn3xcsGdeEuYbCUYfB",
+    "media_preview_url": "https://preview.saavncdn.com/026/3W5heJ12fDeGr8uk8P6oWqULYijpVLh1l5Q5XJ6SLfxZ76_96_p.mp4",
+    "perma_url": "https://www.jiosaavn.com/song/chammak-challo/NhFacBJeQ0U",
+    "album_url": "https://www.jiosaavn.com/album/ra-one/bcUOpGHj1I4_",
+    "duration": "208",
+    "rights": {
+      "code": 0,
+      "reason": "",
+      "cacheable": true,
+      "delete_cached_object": false
+    },
+    "webp": false,
+    "cache_state": "false",
+    "starred": "false",
+    "artistMap": {
+      "Vishal &amp; Shekhar": "459880",
+      "Akon": "483645",
+      "Vishal Dadlani": "455669",
+      "Niranjan Iyengar": "465066",
+      "Kareena Kapoor Khan": "852212",
+      "Arjun Rampal": "457647",
+      "Shah Rukh Khan": "461361"
+    },
+    "release_date": "",
+    "vcode": "010910090367265",
+    "vlink": "https://jiotunepreview.jio.com/content/Converted/010910090380670.mp3",
+    "triller_available": false,
+    "label_url": "/label/t-series-albums/6DLuXO3VoTo_",
+    "label_id": "34297",
+    "media_url": "https://aac.saavncdn.com/026/4525eb9287203ed2f7d2abab5eff46bc_320.mp4",
+    "lyrics": null
+  }
+]
+```
+
+### **Notes:**
+1. **`media_url`**: The **320kbps** decrypted media URL (provides high-quality audio).
+2. **`media_preview_url`**: The **96kbps** preview URL (for low-quality preview).
+
+3. There can be a **`.mp4`** extension occasionally in the URLs. It does not denote a video; instead, it is just in .mp4 format with only an audio channel. Endpoints should handle it.
+
+
+
 * **`/song/get`:** Retrieve a specific song by its ID.
     * **Query Parameters:**
         * `song_id`: Unique identifier of the song (required).
