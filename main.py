@@ -53,17 +53,8 @@ def create_app() -> FastAPI:
     # Include global exception handler
     GlobalExceptionHandler(fastapi_app)
     # Include routers
-    fastapi_app.include_router(
-        song_routes.router, prefix="/song", tags=["Songs"])
-    fastapi_app.include_router(
-        album_routes.router, prefix="/album", tags=["Albums"])
-    fastapi_app.include_router(
-        playlist_routes.router, prefix="/playlist", tags=["Playlists"]
-    )
-    fastapi_app.include_router(
-        lyrics_routes.router, prefix="/lyrics", tags=["Lyrics"])
-
-    @fastapi_app.get("/", response_class=HTMLResponse)
+    
+    @fastapi_app.get("/", response_class=HTMLResponse, tags=["Root"])
     async def read_root():
         # Path to the README file
         readme_path = os.path.join(os.path.dirname(__file__), "README.md")
@@ -94,7 +85,7 @@ def create_app() -> FastAPI:
         return HTMLResponse(content=html_page)
 
     # Health check
-    @fastapi_app.get("/ping", tags=["Health", "Ping", "Test"])
+    @fastapi_app.get("/ping", tags=["Health Check"])
     async def health_check() -> (
         Dict[str, Union[str, List[Dict[str, Union[str, bool]]]]]
     ):
@@ -125,6 +116,16 @@ def create_app() -> FastAPI:
         )
 
         return {"msg": "Pong!", "status": overall_status, "details": health_status}
+
+    fastapi_app.include_router(
+        song_routes.router, prefix="/song", tags=["Songs"])
+    fastapi_app.include_router(
+        album_routes.router, prefix="/album", tags=["Albums"])
+    fastapi_app.include_router(
+        playlist_routes.router, prefix="/playlist", tags=["Playlists"]
+    )
+    fastapi_app.include_router(
+        lyrics_routes.router, prefix="/lyrics", tags=["Lyrics"])
 
     logger.info("Application initialized successfully")
     return fastapi_app
